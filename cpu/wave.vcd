@@ -1,5 +1,5 @@
 $date
-	Thu Sep 14 01:06:36 2023
+	Fri Sep 15 20:09:56 2023
 $end
 $version
 	Icarus Verilog
@@ -7,75 +7,45 @@ $end
 $timescale
 	1s
 $end
-$scope module Z16RegisterFile_tb $end
-$var wire 16 ! o_rs2_data [15:0] $end
-$var wire 16 " o_rs1_data [15:0] $end
-$var reg 1 # i_clk $end
-$var reg 4 $ i_rd_addr [3:0] $end
-$var reg 16 % i_rd_data [15:0] $end
-$var reg 1 & i_rd_wen $end
-$var reg 4 ' i_rs1_addr [3:0] $end
-$var reg 4 ( i_rs2_addr [3:0] $end
-$scope module Regfile $end
-$var wire 1 # i_clk $end
-$var wire 4 ) i_rd_addr [3:0] $end
-$var wire 16 * i_rd_data [15:0] $end
-$var wire 1 & i_rd_wen $end
-$var wire 4 + i_rs1_addr [3:0] $end
-$var wire 4 , i_rs2_addr [3:0] $end
-$var wire 16 - o_rs2_data [15:0] $end
-$var wire 16 . o_rs1_data [15:0] $end
+$scope module Z16InstrMemory_tb $end
+$var wire 16 ! o_instr [15:0] $end
+$var reg 16 " i_addr [15:0] $end
+$scope module InstrMem $end
+$var wire 16 # i_addr [15:0] $end
+$var wire 16 $ o_instr [15:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b0 .
-b0 -
-b0 ,
-b0 +
-bx *
-bx )
-b0 (
-b0 '
-0&
-bx %
 bx $
-0#
-b0 "
-b0 !
+bx #
+bx "
+bx !
 $end
-#1
-1#
 #2
-0#
-b101010101010101 %
-b101010101010101 *
-b1010 $
-b1010 )
-1&
-#3
-1#
+b101000011001 !
+b101000011001 $
+b0 "
+b0 #
 #4
-0#
-0&
-#5
-1#
+b1001000100000 !
+b1001000100000 $
+b10 "
+b10 #
 #6
-0#
-b101010101010101 "
-b101010101010101 .
-b1010 '
-b1010 +
-#7
-1#
+b1111111100011001 !
+b1111111100011001 $
+b100 "
+b100 #
 #8
-0#
-b101010101010101 !
-b101010101010101 -
-b1010 (
-b1010 ,
-#9
-1#
+b1111110001001111 !
+b1111110001001111 $
+b110 "
+b110 #
 #10
-0#
+b11111101 !
+b11111101 $
+b1000 "
+b1000 #
+#12
