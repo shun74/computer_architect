@@ -16,4 +16,5 @@ module problem5(
       2'b11: o_data = i_data_3;
     endcase
   end
+
 endmodule

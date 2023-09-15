@@ -37,4 +37,5 @@ module problem5_tb;
     $display("o_data = %04x", o_p);
     $finish;
   end
+
 endmodule

@@ -28,4 +28,5 @@ module Z16RegisterFile(
       mem[i_rd_addr]  <= mem[i_rd_addr];
     end
   end
+
 endmodule

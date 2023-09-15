@@ -9,4 +9,5 @@ module problem1(
   assign w_p0 = i_p0 & i_p1;
 
   assign o_p = w_p0 | i_p2;
+
 endmodule

@@ -30,4 +30,5 @@ module adder8_tb;
     #2
     $finish;
   end
+
 endmodule

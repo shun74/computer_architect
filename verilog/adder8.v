@@ -8,4 +8,5 @@ module adder8(
   always @(posedge clk) begin
     out <= in0 + in1;
   end
+
 endmodule

@@ -17,4 +17,5 @@ module problem6(
       endcase
     end
   end
+
 endmodule

@@ -34,4 +34,5 @@ module problem1_tb;
     $display("o_p = %02x", o_p);
     $finish;
   end
+
 endmodule
