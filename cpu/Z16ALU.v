@@ -21,8 +21,8 @@ module Z16ALU(
         4'h4 : alu  = i_data_b | i_data_a;
         4'h5 : alu  = i_data_b & i_data_a;
         4'h6 : alu  = i_data_b ^ i_data_a;
-        4'h7 : alu  = i_data_a << i_data_a;
-        4'h8 : alu  = i_data_a >> i_data_a;
+        4'h7 : alu  = i_data_b << i_data_a;
+        4'h8 : alu  = i_data_b >> i_data_a;
         default: alu = i_data_b + i_data_a;
       endcase
     end

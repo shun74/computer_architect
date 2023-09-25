@@ -12,7 +12,7 @@ module Z16DataMemory(
 
   always @(posedge i_clk) begin
     if(i_wen) begin
-      mem[i_addr[10:0]] <= i_data; 
+      mem[i_addr[10:1]] <= i_data; 
     end
   end
 

@@ -1,15 +1,15 @@
 module Z16RegisterFile(
-  input  wire           i_clk,      // クロック
+  input  wire           i_clk,
 
-  input  wire   [3:0]   i_rs1_addr, // RS1アドレス
-  output wire   [15:0]  o_rs1_data, // RS1読み出しデータ
+  input  wire   [3:0]   i_rs1_addr,
+  output wire   [15:0]  o_rs1_data,
 
-  input  wire   [3:0]   i_rs2_addr, // RS2アドレス
-  output wire   [15:0]  o_rs2_data, // RS2読み出しデータ
+  input  wire   [3:0]   i_rs2_addr,
+  output wire   [15:0]  o_rs2_data,
 
-  input  wire   [3:0]   i_rd_addr,  // RDアドレス
-  input  wire           i_rd_wen,   // RD書き込み有効化
-  input  wire   [15:0]  i_rd_data   // RD書き込みデータ
+  input  wire   [3:0]   i_rd_addr,
+  input  wire           i_rd_wen,   
+  input  wire   [15:0]  i_rd_data   
 );
 
   // レジスタファイル本体
