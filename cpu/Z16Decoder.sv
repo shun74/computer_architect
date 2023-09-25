@@ -1,13 +1,13 @@
 module Z16Decoder(
-  input wire [15:0] i_instr,
-  output wire [3:0] o_opecode,
-  output wire [3:0] o_rd_addr,
-  output wire [3:0] o_rs1_addr,
-  output wire [3:0] o_rs2_addr,
-  output wire [15:0] o_imm,
-  output wire       o_rd_wen,
-  output wire       o_mem_wen,
-  output wire [3:0] o_alu_ctrl
+  input  wire [15:0]  i_instr,
+  output wire [3:0]   o_opecode,
+  output wire [3:0]   o_rd_addr,
+  output wire [3:0]   o_rs1_addr,
+  output wire [3:0]   o_rs2_addr,
+  output wire [15:0]  o_imm,
+  output wire         o_rd_wen,
+  output wire         o_mem_wen,
+  output wire [3:0]   o_alu_ctrl
 );
 
   assign o_opecode = i_instr[3:0];
@@ -33,7 +33,8 @@ module Z16Decoder(
   function get_rd_wen;
     input [15:0] i_instr;
   begin
-    if(4'hA == i_instr[3:0]) begin
+    // ALU opecode : 4'h0 ~ 4'h8
+    if(i_instr[3:0] <= 4'h8 || 4'hA == i_instr[3:0]) begin
       get_rd_wen = 1'b1;
     end else begin
       get_rd_wen = 1'b0;
@@ -55,7 +56,11 @@ module Z16Decoder(
   function [3:0] get_alu_ctrl;
     input [15:0] i_instr;
   begin
-    get_alu_ctrl = 4'h0;
+    if (i_instr[3:0] <= 4'h8) begin
+      get_alu_ctrl = i_instr[3:0];
+    end else begin
+      get_alu_ctrl = 4'h0;
+    end
   end
   endfunction
 
