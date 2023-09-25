@@ -10,19 +10,30 @@ module Z16Decoder(
   output wire [3:0]   o_alu_ctrl
 );
 
-  assign o_opecode = i_instr[3:0];
-  assign o_rd_addr = i_instr[7:4];
-  assign o_rs1_addr = i_instr[11:8];
+  assign o_opecode  = i_instr[3:0];
+  assign o_rd_addr  = i_instr[7:4];
+  assign o_rs1_addr = get_rs1_addr(i_instr);
   assign o_rs2_addr = i_instr[15:12];
-  assign o_imm = get_imm(i_instr);
-  assign o_rd_wen = get_rd_wen(i_instr);
-  assign o_mem_wen = get_mem_wen(i_instr);
+  assign o_imm      = get_imm(i_instr);
+  assign o_rd_wen   = get_rd_wen(i_instr);
+  assign o_mem_wen  = get_mem_wen(i_instr);
   assign o_alu_ctrl = get_alu_ctrl(i_instr);
+
+  function [15:0] get_rs1_addr;
+    input [15:0] i_instr;
+  begin
+    case(i_instr[3:0])
+      4'h9    : get_rs1_addr = i_instr[7:4];
+      default : get_rs1_addr = i_instr[11:8];
+    endcase
+  end
+  endfunction
 
   function [15:0] get_imm;
     input [15:0] i_instr;
   begin
     case(i_instr[3:0])
+      4'h9 : get_imm = {{8{i_instr[15]}}, i_instr[15:8]};
       4'hA : get_imm = {{12{i_instr[15]}}, i_instr[15:12]};
       4'hB : get_imm = {{12{i_instr[7]}}, i_instr[7:4]};
       default : get_imm = 16'h0000;
@@ -34,7 +45,7 @@ module Z16Decoder(
     input [15:0] i_instr;
   begin
     // ALU opecode : 4'h0 ~ 4'h8
-    if(i_instr[3:0] <= 4'h8 || 4'hA == i_instr[3:0]) begin
+    if(i_instr[3:0] <= 4'hA) begin
       get_rd_wen = 1'b1;
     end else begin
       get_rd_wen = 1'b0;
