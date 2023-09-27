@@ -1,2 +1,13 @@
 *.out
 *.vcd
+
+*.out
+*.vcd
+*.map
+*.tar
+*.o
+*.elf
+*.bin
+*.log
+*.pcap
+*.tar
